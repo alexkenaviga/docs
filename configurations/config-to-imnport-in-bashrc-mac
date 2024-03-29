@@ -1,0 +1,41 @@
+#!/bin/bash 
+
+#Custom
+#function realpath() {
+#    [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
+#}
+
+function snippets {
+	SUDO="false"
+	if [ $# -gt 0 ]; then
+		cat $HOME/.Snippets.sh | grep $1
+	else
+		highlight -O ansi --force $HOME/.Snippets.sh
+		# pygmentize -g $HOME/.Snippets.sh
+	fi
+}
+
+function hl {
+	if [ $# -lt 1 ]; then
+		echo "usage: hl <filename>"
+	else
+		highlight -O ansi --force $1
+	fi
+}
+
+#Freeipa and OTP
+# export FREEIPA_PWD="Freeipa_6!"
+# export OTP_PROFILE="alelon-PRIVATE-BEEWEEB-COM-71f6649c-d256-45a5-91af-3ad6ae887010"
+
+#OTP using oathplus
+# freeipaPwdPrint(){
+# 	oathplus --account $OTP_PROFILE | awk -v pwd=$FREEIPA_PWD '{printf pwd$1}'
+# }
+# alias freeipaPwd='freeipaPwdPrint|pbcopy'
+# alias freeipaOtp='oathplus --account $OTP_PROFILE'
+
+
+#Java
+# export JAVA_HOME=`/usr/libexec/java_home -v 11`
+export JAVA_HOME=`/usr/libexec/java_home -v 17`
+# export JAVA_HOME=`/usr/libexec/java_home -v graal`
