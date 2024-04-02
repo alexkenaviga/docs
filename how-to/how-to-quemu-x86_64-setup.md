@@ -14,14 +14,14 @@ qemu-img create -f qcow2 <FILENAME> <SIZE>
 ```bash
 qemu-system-x86_64 -m <MEMORY> -smp <CORE> -boot d -drive file=<FILENAME>,format=qcow2 -drive file=<PATH_TO_ISO>,media=cdrom -nic user,hostfwd=tcp::5022-:22 &
 
-# qemu-system-x86_64 -m 4096 -smp 4 -boot d -drive file=Rhel8.qcow2,format=qcow2 -drive file=/path/to/rhel-8.9-x86_64-boot.iso,media=cdrom -nic user,hostfwd=tcp::5022-:22 &
+# qemu-system-x86_64 -m 4096 -smp cpus=4,cores=4 -boot d -drive file=Rhel8.qcow2,format=qcow2 -drive file=/path/to/rhel-8.9-x86_64-boot.iso,media=cdrom -nic user,hostfwd=tcp::5022-:22 &
 ```
 
 ## Run OS:
 ```bash
 qemu-system-x86_64 -m <MEMORY> -smp <CORE> -boot d -drive file=<FILENAME>,format=qcow2 -nic user,hostfwd=tcp::<HOST_PORT>-:<GUEST_PORT> &
 
-# qemu-system-x86_64 -m 4096 -smp 4 -boot d -drive file=Rhel8.qcow2,format=qcow2 -nic user,hostfwd=tcp::5022-:22 &
+# qemu-system-x86_64 -m 4096 -smp cpus=4,cores=4 -boot d -drive file=Rhel8.qcow2,format=qcow2 -nic user,hostfwd=tcp::5022-:22 &
 ```
 **Note:** `-nic user,hostfwd=tcp::<HOST_PORT>-:<GUEST_PORT>` will create a network interface and (eventually) redirect HOST_PORT to GUEST_PORT
 
